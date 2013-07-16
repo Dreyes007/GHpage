@@ -42,7 +42,7 @@
 		
 				<div id="choice">
 					<ul data-role="listview" data-ajax="true" data-inset="true">
-						<li><a href="#error">Line Check</a></li>						
+						<li><a href="#lineCheck">Line Check</a></li>						
 						<li><a href="#error">Prep List</a></li>
 						<li><a href="#error">Vendors Contact</a></li>
 						<li><a href="#error">Recipes</a></li>
@@ -52,6 +52,16 @@
 				</div>
 				
 			</section>
+			
+			<footer data-role="footer" data-position="fixed">
+				<nav data-role="navbar">
+					<ul>
+						<li><a href="#error" data-icon="bars">Load Json</a></li>
+						<li><a href="#error" data-icon="bars">Load XML</a></li>
+
+					</ul>					
+				</nav>
+			</footer>
 				
 		</section>
 		
@@ -64,6 +74,85 @@
 			</a>
 						
 		</section>
+		
+		<section data-role="page" id="lineCheck" data-add-back-btn="true">
+		
+			<header data-role="header" data-position="fixed">
+				<h1>Line Check</h1>				
+			</header>
+			
+			<form action="" id="fillInfo">
+				
+				<section data-role="fieldcontain">
+					<label for="rname">*Restaurant Name:</label>
+					<input type="text" name="restaurantName" id="rname" value="" placeholder="Restaurant Name" data-mini="true" class="required" />
+						<span class="hint">*Restaurant Name Required</span>
+				</section>
+					
+				<section data-role="fieldcontain">
+					<label for="mgrname">*Manager Name:</label>
+					<input type="text" name="mgrName" id="mgrname" value="" placeholder="Manager Name" data-mini="true" class="required" />
+						<span class="hint">*Manager Name Required</span>
+				</section>
+					
+				<!--Date Select Menu-->
+				<section data-role="fieldcontain">
+					<label for="date">Date:</label>
+					<input type="date" name="date" id="date" value="">
+
+				</section>
+					
+				<!--Radio Buttons-->
+					<fieldset  data-role="controlgroup" data-mini="true">
+						<legend>Food Temperature:</legend>						
+							<input type="radio" name="temp" id="radio-choice-1" value="Above" checked="checked" />
+							<label for="radio-choice-1">Above Temperature</label>
+						
+							<input type="radio" name="temp" id="radio-choice-2" value="Optimal" />
+							<label for="radio-choice-2">Optimal Temperature</label>
+						
+							<input type="radio" name="temp" id="radio-choice-3" value="Below" />
+							<label for="radio-choice-3">Below Temperature</label>					
+					</fieldset>
+					
+				
+				<!--Slider for Service-->
+				<section data-role="fieldcontain">
+					<label for="slider-1">Temperature Degree:</label>
+					<input type="range" name="amount" id="degree" value="41" min="20" max="200" data-highlight="true" data-popup-enable="true" step=".1" />
+				</section>
+				
+				<!--Expiration Flip Toggle Switch-->
+				<section data-role="fieldcontain">
+					<label for="flip-1">Expired?:</label>
+						<select name="flip-1" id="expired" data-role="slider">
+							<option value="yes">YES</option>
+							<option value="no">NO</option>
+						</select>
+						
+				</section>
+				
+				<!--Submit and Reset Buttons-->
+				<!--<div data-role="fieldcontain" data-mini="true">-->
+					<input type="submit" value="Save Linecheck" id="submit" data-inline="true" data-mini="true" />
+					<input type="reset" value="Reset Linecheck"  data-inline="true" data-mini="true" data-theme="b" />
+				<!--</div>-->
+				
+			</form>
+			
+			<footer data-role="footer" data-position="fixed">
+				<nav data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#error" data-icon="star">About</a></li>
+						<li><a href="#error" data-icon="info">Offers</a></li>
+						<li><a href="#error" data-icon="grid">Locations</a></li>
+					</ul>					
+				</nav>
+			</footer>
+			
+		</section>
+
 	<!-- JavaScript under here -->
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
