@@ -2,11 +2,11 @@
 
 	<info>
 		
-		<firstName>Daniel</FirstName>
-		<lastName>Reyes</lastName>
-		<gender>Male</gender>
+		<restaurantName>Daniel</restaurantName>
+		<mgrName>Reyes</mgrName>
 		<date>05/31/2013</date>
-		<orders>3</orders>
-		<takeOut>Yes</takeOut>
+		<temp>45</temp>
+		<degree>3</degree>
+		<expired>Yes</expired>
 		
 	</info>
