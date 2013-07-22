@@ -2,8 +2,66 @@
 // ASDI 1307
 // javaScript for Culinary Toolbox app
 
-// Store form values to Local Storage.
+//loads JSON data
+$('#home').on('pageinit', function (){
+
+
 	
+		$.ajax({
+			url: 'xhr/JSON.php',
+			type: 'GET',
+			dataType: 'json',
+			success: function(response){
+				for(var i=0, j=response.linecheck1.lenght; i<j; i++){
+					var line = response.linecheck1[i];
+					$(''+
+						'<div class="data">'+
+							'<p>'+ line.rname +'</p>'+
+							'<p>'+ line.mgrname +'</p>'+
+							'<p>'+ line.date +'</p>'+
+							'<p>'+ line.temp +'</p>'+
+							'<p>'+ line.degree +'</p>'+
+							'<p>'+ line.expired +'</p>'+
+						'</div>'
+					).appendTo('#loadData');
+				};
+				
+			}
+	 		
+		});
+		
+	$('#loadData').on('click', function(){
+		.ajax();
+		
+	});
+//load XML data
+		$.ajax({
+			url: 'xhr/info.php',
+			type: 'GET',
+			dataType: 'xml',
+			success: function(response){
+				for(var i=0, j=response.info.lenght; i<j; i++){
+					var line = response.info[i];
+					$(''+
+						'<div class="data">'+
+							'<p>'+ line.rname +'</p>'+
+							'<p>'+ line.mgrname +'</p>'+
+							'<p>'+ line.date +'</p>'+
+							'<p>'+ line.temp +'</p>'+
+							'<p>'+ line.degree +'</p>'+
+							'<p>'+ line.expired +'</p>'+
+						'</div>'
+					).appendTo('#loadData');
+				},
+			}			 		
+		});
+		
+	$('#xml').on('click', function(){
+		.ajax();		
+	});
+});
+
+// Store form values to Local Storage.	
 $('#lineCheck').on('pageinit', function(e){
 	e.preventDefault();
 	function validateInfo(key){
@@ -134,7 +192,7 @@ $('#display').on('pageinit', function (){
 	}
 			
 });
-
+//Clear the data from local storage
 $('#option').on('pageinit', function (){
 	
 		$('#clear').on('click', function(){
@@ -145,3 +203,11 @@ $('#option').on('pageinit', function (){
 		});
 
 });
+
+
+
+
+
+
+
+
