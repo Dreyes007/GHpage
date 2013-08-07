@@ -35,5 +35,4 @@ var json = {
 		"expired": ["Expired:", "no"],
 
 	}
-	
 }
