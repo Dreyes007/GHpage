@@ -76,4 +76,29 @@ $('#display').on('pageinit', function(){
 			}
 			
 		};
+		
+	//Edit Link
+	$('#display').append('<a href="#lineCheck" id="editLink">Edit</a> | <a href="#lineCheck" id="deleteLink>Delete</a>')
+	
+	//Delete Link
+	$('#deleteLink').on('click', function(){
+		deleteItem();
+	});
+
+	//Grab the data for an item on local storage
+	function editItem(key){
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		
+	//Populate form with current local storage values.
+		$('#loc').val(item.loc[1]);
+		$('#name').val(item.name[1]);
+		$('#date').val(item.date[1]);
+		$('input:checked').val(item.temp[1]);
+		$('#degree').val(item.degree[1]);
+		$('#expired').val(item.expired[1]);
+		
+	
+	};
+		
 });
