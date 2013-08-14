@@ -98,7 +98,29 @@ $('#display').on('pageinit', function(){
 		$('#degree').val(item.degree[1]);
 		$('#expired').val(item.expired[1]);
 		
+	//Remove the initial listener from the input 'Submit Order' button.
+	//Change Submit Button value to Edit Button
+	$('#submit').val("Edit");
+	var submit = $("submit");
 	
+	$('#submit').on('click', function (){
+		submit.key = this.key;
+		validateInfo(key);
+	});
+	
+	
+	};
+	
+	function deleteItem(key){
+		var ask = confirm("Are you sure you want to delete this information?");
+		if(ask){
+			localStorage.removeItem(this.key);
+			alert("Information has been deleted");
+			window.location.reload();	
+		}else{
+			alert("Information was not deleted!");
+			
+		}
 	};
 		
 });
