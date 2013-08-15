@@ -10,7 +10,7 @@ $('#home').on('pageinit', function (){
 
 //Store  form data to local storage
 
-$('#lineCheck').on('pageinit', function (e){
+$('#lineCheck').on('pageinit', function(e){
 	e.preventDefault();
 	function validateInfo(key){
 		var myForm = $('form');
@@ -64,7 +64,7 @@ $('#display').on('pageinit', function(){
 			alert("There is no data in local storage");
 		}
 	};
-		for (var i=0, i < localStorage.length; i++){
+		for(var i=0; i < localStorage.length; i++){
 			
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -72,22 +72,27 @@ $('#display').on('pageinit', function(){
 			
 			for (var n in obj){
 				var optSubText = obj[n][0] +" "+ obj[n][1];
-				$('#display').append(optSubText + " " + "<br />");
+				$('#display').append(optSubText + "<br />");
 			}
+			$('#display').append(key + " " + "<br />");
+			$('#display').append('<a href="#lineCheck" id="editLink">Edit</a> | <a href="#" id="deleteLink">Delete</a>')
 			
 		};
 		
 	//Edit Link
-	$('#display').append('<a href="#lineCheck" id="editLink">Edit</a> | <a href="#lineCheck" id="deleteLink>Delete</a>')
+	$('#editLink').on('click', function(){
+		validateInfo(key);
+	});
 	
 	//Delete Link
 	$('#deleteLink').on('click', function(){
-		deleteItem();
+		deleteItem(key);
 	});
 
 	//Grab the data for an item on local storage
 	function editItem(key){
-		var value = localStorage.getItem(this.key);
+	$.mobile.changePage("#home", null, true, true);
+		var value = localStorage.getItem(key);
 		var item = JSON.parse(value);
 		
 	//Populate form with current local storage values.
@@ -101,7 +106,7 @@ $('#display').on('pageinit', function(){
 	//Remove the initial listener from the input 'Submit Order' button.
 	//Change Submit Button value to Edit Button
 	$('#submit').val("Edit");
-	var submit = $("submit");
+	var submit = $("#submit");
 	
 	$('#submit').on('click', function (){
 		submit.key = this.key;
@@ -114,7 +119,7 @@ $('#display').on('pageinit', function(){
 	function deleteItem(key){
 		var ask = confirm("Are you sure you want to delete this information?");
 		if(ask){
-			localStorage.removeItem(this.key);
+			localStorage.removeItem(key);
 			alert("Information has been deleted");
 			window.location.reload();	
 		}else{
@@ -123,4 +128,14 @@ $('#display').on('pageinit', function(){
 		}
 	};
 		
+});
+
+$('#option').on('pageinit', function(){
+	
+	$('#clear').on('click', function(){
+		localStorage.clear()
+		alert("All information has been deleted!")
+		$.mobile.changePage("#home", null, true, true);
+	});
+	
 });
