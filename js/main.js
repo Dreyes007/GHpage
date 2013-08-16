@@ -4,30 +4,32 @@
 
 
 $('#home').on('pageinit', function (){
+	console.log("Main Page Loaded!");
 
 	
 
 
-$('#loadData').on('click', function(){
+	$('#loadData').on('click', function(){
 
-	
-		$.ajax({
-			url: "xhr/JSON.js",
-			type: "GET",
-			dataType: "json",
-			success: function(data, status){
-				console.log(status, data);
-				}
+		$(function(){
+			$.ajax({
+				url: "xhr/JSON.js",
+				type: "GET",
+				dataType: "json",
+				success: function(data, status){
+					console.log(status, data);
+					}
+				});
+
 			});
 
-		
+		});
 
-});
 
-});
 //Store  form data to local storage
 
 $('#lineCheck').on('pageinit', function(e){
+	console.log("Line Check Loaded!");
 	e.preventDefault();
 	function validateInfo(key){
 		var myForm = $('form');
@@ -41,10 +43,12 @@ $('#lineCheck').on('pageinit', function(e){
 	};
 	
 	$('#submit').on('click', function(){
+		console.log("Information Saved!");
 		validateInfo();
 	});
 	
 	$('#display').on('click', function(e){
+		console.log("Information Displayed!");
 		getData();
 		e.preventDefault();
 	});
@@ -77,6 +81,7 @@ $('#lineCheck').on('pageinit', function(e){
 $('#display').on('pageinit', function(){
 	
 	var getData = function(){
+		console.log("Information Displayed");
 		if(localStorage.length === 0){
 			alert("There is no data in local storage");
 		}
@@ -155,4 +160,6 @@ $('#option').on('pageinit', function(){
 		$.mobile.changePage("#home", null, true, true);
 	});
 	
+});
+
 });

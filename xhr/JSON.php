@@ -1,4 +1,4 @@
-{
+var item = {
 	"Linecheck1": {
 		"loc": ["Restaurant Name:", "Melbourne"],
 		"name": ["Manager name:", "John"],
