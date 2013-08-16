@@ -4,10 +4,27 @@
 
 
 $('#home').on('pageinit', function (){
+
 	
+
+
+$('#loadData').on('click', function(){
+
 	
+		$.ajax({
+			url: "xhr/JSON.js",
+			type: "GET",
+			dataType: "json",
+			success: function(data, status){
+				console.log(status, data);
+				}
+			});
+
+		
+
 });
 
+});
 //Store  form data to local storage
 
 $('#lineCheck').on('pageinit', function(e){

@@ -1,7 +1,7 @@
-var json = {
+{
 	"Linecheck1": {
-		"rname": ["Restaurant Name:", "Melbourne"],
-		"mgrname": ["Manager name:", "John"],
+		"loc": ["Restaurant Name:", "Melbourne"],
+		"name": ["Manager name:", "John"],
 		"date": ["Date:", "12/14/2011"],
 		"temp": ["Temperature:", "Optimal"],
 		"degree": ["Temperature Degree:", "45"],
@@ -9,8 +9,8 @@ var json = {
 
 	},
 	"Linecheck2": {
-		"rname": ["Restaurant Name:", "Orlando"],
-		"mgrname": ["Manager name:", "Daniel"],
+		"loc": ["Restaurant Name:", "Orlando"],
+		"name": ["Manager name:", "Daniel"],
 		"date": ["Date:", "07/14/2013"],
 		"temp": ["Temperature:", "Optimal"],
 		"degree": ["Temperature Degree:", "49"],
@@ -18,8 +18,8 @@ var json = {
 
 	},
 	"Linecheck3": {
-		"rname": ["Restaurant Name:", "Palm Bay"],
-		"mgrname": ["Manager name:", "Mike"],
+		"loc": ["Restaurant Name:", "Palm Bay"],
+		"name": ["Manager name:", "Mike"],
 		"date": ["Date:", "02/24/2012"],
 		"temp": ["Temperature:", "Optimal"],
 		"degree": ["Temperature Degree:", "75"],
@@ -27,12 +27,13 @@ var json = {
 
 	},
 	"Linecheck4": {
-		"rname": ["Restaurant Name:", "Tampa"],
-		"mgrname": ["Manager name:", "Jane"],
+		"loc": ["Restaurant Name:", "Tampa"],
+		"name": ["Manager name:", "Jane"],
 		"date": ["Date:", "05/15/2012"],
 		"temp": ["Temperature:", "Optimal"],
 		"degree": ["Temperature Degree:", "95"],
 		"expired": ["Expired:", "no"],
 
 	}
-}
+};
+
