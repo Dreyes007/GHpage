@@ -6,28 +6,38 @@
 $('#home').on('pageinit', function (){
 	console.log("Main Page Loaded!");
 
-	
-
-
 	$('#loadData').on('click', function(){
+		console.log("Json data");
+		
+	});
+	
+$('#loadData').on('pageinit', function(){
+		var load = $(function(){
+						$.ajax({
+							url: "xhr/JSON.js",
+							type: "GET",
+							dataType: "json",
+							success: function(response){
+								for(var i=0, j=response.items.length; i<j; i++){
+									var item = response.items[i];
+									$(''+
+										'<div class="data">'+
+											'<p>'+ item.loc +'</p>'+
+											'<p>'+ item.name +'</p>'+
+											'<p>'+ item.date +'</p>'+
+											'<p>'+ item.temp +'</p>'+
+											'<p>'+ item.degree +'</p>'+
+											'<p>'+ item.expired +'</p>'+
+										'</div>'
+									).appendTo('#loadData');						
+								};
+							}
+						});
 
-		$(function(){
-			$.ajax({
-				url: "xhr/JSON.js",
-				type: "GET",
-				dataType: "json",
-				success: function(data, status){
-					console.log(status, data);
-					}
-				});
-
-			});
-
-		});
-
-
+					});
+});
+	
 //Store  form data to local storage
-
 $('#lineCheck').on('pageinit', function(e){
 	console.log("Line Check Loaded!");
 	e.preventDefault();
@@ -43,7 +53,6 @@ $('#lineCheck').on('pageinit', function(e){
 	};
 	
 	$('#submit').on('click', function(){
-		console.log("Information Saved!");
 		validateInfo();
 	});
 	
@@ -81,7 +90,6 @@ $('#lineCheck').on('pageinit', function(e){
 $('#display').on('pageinit', function(){
 	
 	var getData = function(){
-		console.log("Information Displayed");
 		if(localStorage.length === 0){
 			alert("There is no data in local storage");
 		}

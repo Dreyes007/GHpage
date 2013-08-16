@@ -47,7 +47,7 @@
 				
 					<ul data-role="listview" data-ajax="true" data-inset="true">
 						<li><a href="#lineCheck">Line Check</a></li>
-						<li><a href="#error">Prep List</a></li>
+						<li><a href="#loadData">JSON Data</a></li>
 						<li><a href="#error">Recipes</a></li>
 						<li><a href="#error">Vendors</a></li>
 						
@@ -62,7 +62,7 @@
 				
 					<ul>
 					
-						<li><a href="#loadData" data-icon="bars">Load JSON</a></li>
+						<li><a href="#error" data-icon="bars">Prep Sheets</a></li>
 						<li><a href="#error" data-icon="bars">Load XML</a></li>
 						<li><a href="#display" data-icon="info">Display Info</a></li>
 						<li><a href="#option" data-icon="gear">Options</a></li>
@@ -72,9 +72,14 @@
 				</nav>
 			
 			</footer>
-			
+					
+		</section>
+		
 		<!--This is for the JSON data display-->
-			<div id="loadData">
+		<section data-role="page" id="loadData" data-add-back-btn="true">
+			<header data-role="header" data-position="fixed">
+				<h1>JSON DATA</h1>	
+			</header>
 				<div class="data">
 					<p></p>
 					<p></p>
@@ -82,10 +87,7 @@
 					<p></p>
 					<p></p>
 					<p></p>
-				</div>
-			</div>
-		
-		
+					</div>
 		</section>
 		
 		<!--This guides the browse categories to an error page for the pages that are not set up yet-->

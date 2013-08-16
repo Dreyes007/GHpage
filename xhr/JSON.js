@@ -1,12 +1,15 @@
 {
-    "Location": "Melbourne",
-    "Name": "John Doe",
-    "Date": "8/15/2013",
-    "Temperature": "Optimal",
-    "Degree": 41,
-    "Expired": "No"    
-
-    
+	"items":
+	[
+		{
+			"loc"		:["Location:", "Melbourne"],
+			"name"		:["Name:", "John Doe"],
+			"date"		:["Date:", "8/15/2013"],
+			"temp"		:["Temperature:", "Optimal"],
+			"degree"	:["Degree:", 41],
+			"expired"	:["Expired:", "No"]    
+    	}
+    ]
 }
 
 
