@@ -36,16 +36,13 @@ $('#loadData').on('pageinit', function(){
 
 		});
 });
-		$(function(){
-			$.ajax({
-				url: "xhr/info.php",
-				type: "GET",
-				dataType: "xml",
-				success: function(data, status){
-					console.log(status, data);
-				}
-			});		
-		});
+	var data = $.parseXML(xml);
+	
+	var items = $(data);
+	items.find("item").each(function(){
+		var item = $(this);
+		console.log("Name: ", item.find("name"));
+	});
 	
 //Store  form data to local storage
 $('#lineCheck').on('pageinit', function(e){
