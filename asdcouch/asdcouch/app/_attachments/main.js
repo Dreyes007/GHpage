@@ -1,50 +1,33 @@
-// Daniel Reyes
-// ASDI 1308
-// javaScript for Chef Tools app
-
-
 $('#home').on('pageinit', function (){
-	console.log("Main Page Loaded!");
+	console.log("Main page loaded!!");
 
-	//$('#loadData').on('click', function(){
-		//console.log("Json data loaded");
-		
-	//});
+
+
+
+$('#loadData').on('pageinit', function () {
 	
-/*$('#loadData').on('pageinit', function(){
-		$(function(){
-			$.ajax({
-				url: "xhr/JSON.js",
-				type: "GET",
-				dataType: "json",
-				success: function(response){
-					for(var i=0, j=response.items.length; i<j; i++){
-						var item = response.items[i];
-							$(''+
-								'<div class="data">'+
-									'<p>'+ item.loc +'</p>'+
-									'<p>'+ item.name +'</p>'+
-									'<p>'+ item.date +'</p>'+
-									'<p>'+ item.temp +'</p>'+
-									'<p>'+ item.degree +'</p>'+
-									'<p>'+ item.expired +'</p>'+
-								'</div>'
-								).appendTo('#loadData');						
-							};
-						}
+	$.ajax({
+		"url": "_view/linechecks",
+		"dataType": "json",
+		"success": function(data){
+			$.each(data.rows, function(index, linecheck){
+				var location = linecheck.value.location;
+				var name = linecheck.value.name
+				var temp = linecheck.value.temperature;
+				var date = linecheck.value.date;
+				$('#checklist').append(
+					$('<li>').append(
+						$('<a>').attr("href", "#")
+							.text(name)
+					)
+				);
 			});
-
-		});
-});
-	var data = $.parseXML(xml);
-	
-	var items = $(data);
-	items.find("item").each(function(){
-		var item = $(this);
-		console.log("Name: ", item.find("name"));
+			$('#checklist').listview('refresh');
+		}
 	});
-*/	
-//Store  form data to local storage
+});
+
+//Store form data to local storage
 $('#lineCheck').on('pageinit', function(e){
 	console.log("Line Check Loaded!");
 	e.preventDefault();
@@ -60,7 +43,7 @@ $('#lineCheck').on('pageinit', function(e){
 	};
 	
 	$('#submit').on('click', function(){
-		validateInfo()
+		validateInfo();
 	});
 	
 	$('#display').on('click', function(e){
@@ -93,9 +76,10 @@ $('#lineCheck').on('pageinit', function(e){
 	};
 	
 });
+
 //Show the stored value from local storage
 $('#display').on('pageinit', function(){
-	
+	console.log("Display information loaded!!");
 	var getData = function(){
 		if(localStorage.length === 0){
 			alert("There is no data in local storage");
@@ -168,7 +152,7 @@ $('#display').on('pageinit', function(){
 });
 
 $('#option').on('pageinit', function(){
-	
+	console.log("Clear local page loaded!!");
 	$('#clear').on('click', function(){
 		localStorage.clear()
 		alert("All information has been deleted!")

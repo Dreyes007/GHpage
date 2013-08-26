@@ -1,0 +1,10 @@
+{
+  "env": {
+    "local": {
+      "db": "http://127.0.0.1:5984/chefproject"
+    },
+     "cloudant": {
+      "db": "https://dreyes007:afrosith007@dreyes007.cloudant.com/asdproject/_all_docs"
+    }
+  }
+}
