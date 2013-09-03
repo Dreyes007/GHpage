@@ -2,28 +2,74 @@ $('#home').on('pageinit', function (){
 	console.log("Main page loaded!!");
 
 
-
-
-$('#loadData').on('pageinit', function () {
+/*$('#loadData').on('pageinit', function () {
 	
 	$.ajax({
 		"url": "_view/linechecks",
 		"dataType": "json",
-		"success": function(data){
+		"success": function(data){			
 			$.each(data.rows, function(index, linecheck){
-				var location = linecheck.value.location;
-				var name = linecheck.value.name
-				var temp = linecheck.value.temperature;
-				var date = linecheck.value.date;
+				var Restaurant = linecheck.value.Restaurant;
+				var Manager = linecheck.value.Manager;
+				var Date = linecheck.value.Date;
+				var Condition = linecheck.value.Condition;
+				var Temperature = linecheck.value.Temperature;
+				var Expired = linecheck.value.Expired;
 				$('#checklist').append(
 					$('<li>').append(
 						$('<a>').attr("href", "#")
-							.text(name)
+							.append("Restaurant:" + Restaurant)
 					)
 				);
 			});
 			$('#checklist').listview('refresh');
 		}
+	});
+});*/
+
+//Pulls Data from CouchDB
+$(document).on('pageinit', '#home', function(){
+	console.log("Ready to load data!!");
+		$.couch.db("chefproject").view("chefproject/linechecks",{
+			success: function(data) {
+				//console.log(data);
+				$('#checklist').empty();
+				$.each(data.rows, function(index, value) {
+				 	var item = (value.value || value.doc);
+				 	$('#checklist').append(
+				 		$('<li>').append(
+				 			$('<a>')
+				 				.attr("href", "add.html?linecheck=" + item.Manager)
+				 				.append(item.Restaurant)
+				 		)
+				 	);
+				});
+				//$('#checklist').listview('refresh');
+			}
+		});
+		
+});
+
+var urlVars = function() {
+	var urlData = $($.mobile.activePage).data("url");
+	var urlParts = urlData.split('?');
+	var urlPairs = urlParts[0].split('&');
+	var urlValues = {};
+	for (var pair in urlPairs) {
+		var keyValue = urlPairs[pair].split('=');
+		var key = decodeURIComponent(keyValue[0]);
+		var value = decodeURIComponent(keyValue[1]);
+		urlValues[key] = value;
+	}
+	return urlValues;
+};
+
+//Pulls detailed data for the Restaurants
+$(document).on('pageinit', '#linecheck', function() {
+	var linecheck = urlVars()["linecheck"];
+	//console.log(linecheck);
+	$.couch.db("chefproject").view("chefproject/courses", {
+		key: "Daytona" + Daytona
 	});
 });
 
@@ -161,4 +207,31 @@ $('#option').on('pageinit', function(){
 	
 });
 
+$('#addNew').on('pageinit', function(){
+	console.log("New Restaurant Loaded");
+	
+	function addnew(){
+		
+		var obj = {}
+		obj.store = $('#store').val();
+		obj.mgrName = $('#mgrName').val();
+		obj.open = $('#open').val();
+		
+		$.couch.db("chefproject").saveDoc(obj, {
+			success: function(data){
+			console.log(data + "/n Store added Succesfully!"); 
+			},
+			error: function(status){
+			console.log("There was an error" + status);
+			}
+		});
+	}
+
+	$('#submit').on('click', function(){
+		addnew();
+	});
+
 });
+
+});
+
